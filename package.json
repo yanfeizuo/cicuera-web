@@ -9,16 +9,18 @@
   "scripts": {
     "dev": "next dev",
     "clean": "rm -r dist",
-    "build": "tsc -p tsconfig.build.json && rollup -c",
+    "build": "tsc -p tsconfig.build.json && copyfiles ui/*.css dist/ui/ && rollup -c",
     "prepare": "npm run build",
     "start": "next start",
     "lint": "next lint"
   },
   "dependencies": {
+    "copyfiles": "^2.4.1",
     "next": "15.4.6",
     "react": "19.1.0",
     "react-dom": "19.1.0",
-    "react-plaid-link": "^4.1.1"
+    "react-plaid-link": "^4.1.1",
+    "save": "^2.9.0"
   },
   "devDependencies": {
     "@eslint/eslintrc": "^3",
