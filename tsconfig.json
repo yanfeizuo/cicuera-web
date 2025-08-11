@@ -1,0 +1,47 @@
+{
+  "compilerOptions": {
+    "target": "ES2017",
+    "lib": [
+      "ES2017",
+      "DOM",
+      "DOM.Iterable"
+    ],
+    "module": "NodeNext",
+    "moduleResolution": "NodeNext",
+    "strict": true,
+    "esModuleInterop": true,
+    "skipLibCheck": true,
+    "forceConsistentCasingInFileNames": true,
+    "noEmitOnError": true,
+    "outDir": "./dist",
+    "rootDir": "./",
+    "declaration": true,
+    "declarationMap": true,
+    "sourceMap": true,
+    "jsx": "preserve",
+    "types": [
+      "node"
+    ],
+    "allowJs": true,
+    "noEmit": false,
+    "incremental": true,
+    "resolveJsonModule": true,
+    "isolatedModules": true,
+    "plugins": [
+      {
+        "name": "next"
+      }
+    ]
+  },
+  "include": [
+    "./**/*.ts",
+    "./**/*.tsx",
+    ".next/types/**/*.ts"
+  ],
+  "exclude": [
+    "node_modules",
+    "dist",
+    "**/*.test.ts",
+    "**/*.spec.ts"
+  ]
+}
