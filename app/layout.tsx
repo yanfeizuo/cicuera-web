@@ -1,6 +1,12 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
+import { GoogleOAuthProvider } from '@react-oauth/google';
+import CssBaseline from '@mui/material/CssBaseline';
+import AppKit from "./context/initWallet";
+import CheckAuth from "./context/checkAuth";
+
+const GoogleClientId = process.env.NEXT_PUBLIC_GOOGLE_CLIENT_ID
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -25,7 +31,15 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`${geistSans.variable} ${geistMono.variable}`}>
-        {children}
+        <AppKit>
+          <CheckAuth>
+            <CssBaseline />
+            <GoogleOAuthProvider clientId={GoogleClientId!}>
+
+              {children}
+            </GoogleOAuthProvider>
+          </CheckAuth>
+        </AppKit>
       </body>
     </html>
   );

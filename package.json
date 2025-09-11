@@ -1,48 +1,35 @@
 {
-  "name": "@meterio/cicuera-web",
+  "name": "cicuera-web",
   "version": "0.1.0",
-  "main": "./dist/index.js",
-  "types": "./dist/index.d.ts",
-  "files": [
-    "dist"
-  ],
+  "private": true,
   "scripts": {
     "dev": "next dev",
-    "clean": "rm -r dist",
-    "build": "tsc -p tsconfig.build.json && copyfiles ui/*.css dist/ui/ && rollup -c",
-    "prepare": "npm run build",
+    "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "eslint"
   },
   "dependencies": {
-    "copyfiles": "^2.4.1",
-    "next": "15.4.6",
+    "@emotion/react": "^11.14.0",
+    "@emotion/styled": "^11.14.1",
+    "@mui/icons-material": "^7.3.2",
+    "@mui/material": "^7.3.1",
+    "@react-oauth/google": "^0.12.2",
+    "@reown/appkit": "^1.7.10",
+    "@reown/appkit-adapter-ethers": "^1.7.10",
+    "ethers": "^6.15.0",
+    "next": "15.5.0",
     "react": "19.1.0",
     "react-dom": "19.1.0",
     "react-plaid-link": "^4.1.1",
-    "save": "^2.9.0"
+    "zustand": "^5.0.8"
   },
   "devDependencies": {
     "@eslint/eslintrc": "^3",
-    "@rollup/plugin-commonjs": "^28.0.6",
-    "@rollup/plugin-node-resolve": "^16.0.1",
-    "@rollup/plugin-terser": "^0.4.4",
-    "@rollup/plugin-typescript": "^12.1.4",
     "@types/node": "^20",
     "@types/react": "^19",
     "@types/react-dom": "^19",
     "eslint": "^9",
-    "eslint-config-next": "15.4.6",
-    "rollup": "^4.46.2",
-    "rollup-plugin-dts": "^6.2.1",
-    "rollup-plugin-postcss": "^4.0.2",
+    "eslint-config-next": "15.5.0",
     "typescript": "^5"
-  },
-  "exports": {
-    ".": {
-      "import": "./dist/index.esm.js",
-      "require": "./dist/index.cjs.js",
-      "types": "./dist/index.d.ts"
-    }
   }
 }

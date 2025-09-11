@@ -1,20 +1,26 @@
 'use client';
 
-import { OpenLink } from '../index';
+import { Box, Container, Stack, Typography } from '@mui/material';
+import XSignin from './components/XSignin';
+import GoogleSignin from './components/GoogleSignin';
+import EmailSignin from './components/EmailSignin';
 
-export default function DemoPage() {
-  // const { isOpen, openModal, closeModal } = useModal();
-
-  const handleSubmit = (status: boolean) => {
-    console.log('status', status);
-  };
+export default function Page() {
 
   return (
-    <div>
-      
-      <OpenLink
-        onSubmit={handleSubmit}
-      />
-    </div>
+    <Container sx={{display: 'flex', justifyContent: 'center'}}>
+      <Box maxWidth={500}>
+        <EmailSignin />
+
+        <Stack direction={'row'} justifyContent={'center'}>
+          <Typography sx={{py: 2}} color='text.secondary'>OR</Typography>
+        </Stack>
+
+        <XSignin />
+
+        <GoogleSignin />
+
+      </Box>
+    </Container>
   );
 }
