@@ -1,3 +1,4 @@
+'use client'
 import React from 'react'
 import { GoogleLogin } from '@react-oauth/google';
 import { API_BASE_URL } from '@/app/constants';

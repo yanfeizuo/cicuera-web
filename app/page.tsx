@@ -1,5 +1,3 @@
-'use client';
-
 import { Box, Container, Stack, Typography } from '@mui/material';
 import XSignin from './components/XSignin';
 import GoogleSignin from './components/GoogleSignin';

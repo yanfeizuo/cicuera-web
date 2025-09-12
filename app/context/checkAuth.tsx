@@ -19,7 +19,7 @@ const CheckAuth = ({ children }: { children: ReactNode}) => {
       const checkRes = await fetchWithAuth('user/checkAuth')
       const checkJson = await checkRes.json()
       if (checkJson.error) {
-        if (!['/', 'login'].includes(pathname)) {
+        if (!['/', '/login'].includes(pathname)) {
           router.push('/')
         }
       } else {

@@ -1,3 +1,4 @@
+'use client'
 import { API_BASE_URL } from '@/app/constants';
 import { useUserStore } from '@/app/store/userStore';
 import { Box, Button } from '@mui/material';
