@@ -10,12 +10,16 @@ import { useRouter } from 'next/navigation'
 const EmailSignup = () => {
   const router = useRouter()
   const [email, setEmail] = useState<string>('')
-  const [verifyCode, setVerifyCode] = useState<string>('')
+
+  const [username, setUsername] = useState('')
+
   const [password, setPassword] = useState('')
   const [password2, setPassword2] = useState('')
-
+  
   const [showPassword, setShowPassword] = useState(false)
   const [showPassword2, setShowPassword2] = useState(false)
+
+  const [verifyCode, setVerifyCode] = useState<string>('')
 
   const { checkUser } = useUserStore(useShallow(state => ({
     checkUser: state.checkUser
@@ -31,7 +35,7 @@ const EmailSignup = () => {
     }
   }
   const handleEmailLogin = async () => {
-    const res = await fetch(`${API_BASE_URL}/email/user?email=${email}&password=${password}&code=${verifyCode}`)
+    const res = await fetch(`${API_BASE_URL}/email/user?email=${email}&username=${username}&password=${password}&code=${verifyCode}`)
     const resJson = await res.json()
     if (!resJson.error) {
       const { id } = resJson.results
@@ -51,6 +55,9 @@ const EmailSignup = () => {
   const handleShowPassword2 = () => {
     setShowPassword2(!showPassword2)
   }
+  const handleGoLogin = () => {
+    router.push('/login')
+  }
   return (
     <Box>
       <Stack sx={{ mt: 4 }} direction={'row'} justifyContent={'center'}>
@@ -64,6 +71,15 @@ const EmailSignup = () => {
         variant='outlined'
         value={email}
         onChange={e => setEmail(e.target.value)}
+      ></TextField>
+      <TextField
+        sx={{ mt: 1 }}
+        size='small'
+        fullWidth
+        label="User name"
+        variant='outlined'
+        value={username}
+        onChange={e => setUsername(e.target.value)}
       ></TextField>
       <TextField
         sx={{ mt: 2 }}
@@ -124,6 +140,10 @@ const EmailSignup = () => {
       )} sx={{ mt: 2 }} fullWidth variant='contained'
         onClick={handleEmailLogin}
       >Signup</Button>
+      <Stack direction={'row'} alignItems={'center'}>
+        <Typography color='text.secondary' fontSize={10}>Already have an account?</Typography>
+        <Button size='small' onClick={handleGoLogin}>Log in</Button>
+      </Stack>
     </Box>
   )
 }

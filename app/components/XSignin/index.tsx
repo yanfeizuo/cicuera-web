@@ -77,7 +77,7 @@ const XSignin = () => {
   return (
     <Box>
       <Button fullWidth variant='contained' disabled={!!data} onClick={handleTwitterLogin}>
-        Signin with X
+        Continue with X
       </Button>
     </Box>
   )

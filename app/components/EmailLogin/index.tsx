@@ -1,3 +1,4 @@
+'use client'
 import { API_BASE_URL } from '@/app/constants'
 import { useUserStore } from '@/app/store/userStore'
 import { Box, Button, IconButton, InputAdornment, Stack, TextField, Typography } from '@mui/material'
@@ -6,7 +7,7 @@ import { useShallow } from 'zustand/shallow'
 import { Visibility, VisibilityOff } from '@mui/icons-material'
 import { useRouter } from 'next/navigation'
 
-const EmailSignin = () => {
+const EmailLogin = () => {
   const router = useRouter()
   const [userName, setUserName] = useState<string>('')
   const [showPassword, setShowPassword] = useState(false)
@@ -35,13 +36,11 @@ const EmailSignin = () => {
   const handleShowPassword = () => {
     setShowPassword(!showPassword)
   }
-  const handleSignup = () => {
-    router.push('/signup')
-  }
+  
   return (
     <Box>
       <Stack sx={{mt: 4}} direction={'row'} justifyContent={'center'}>
-        <Typography fontWeight={700}>Signin</Typography>
+        <Typography fontWeight={700}>Log in</Typography>
       </Stack>
       <TextField
         sx={{ mt: 1 }}
@@ -73,13 +72,9 @@ const EmailSignin = () => {
       ></TextField>
       <Button disabled={!userName || !password} sx={{ mt: 2 }} fullWidth variant='contained'
         onClick={handleLogin}
-      >Signin</Button>
-      <Stack direction={'row'} alignItems={'center'}>
-        <Typography color='text.secondary' fontSize={10}>No account yet?</Typography>
-        <Button size='small' onClick={handleSignup}>Signup</Button>
-      </Stack>
+      >Login</Button>
     </Box>
   )
 }
 
-export default EmailSignin
+export default EmailLogin

@@ -19,7 +19,7 @@ const CheckAuth = ({ children }: { children: ReactNode}) => {
       const checkRes = await fetchWithAuth('user/checkAuth')
       const checkJson = await checkRes.json()
       if (checkJson.error) {
-        router.push('/')
+        // router.push('/')
       } else {
         const {id, type, name, avatar} = checkJson.results
         setUserData(id, type, name, avatar)
