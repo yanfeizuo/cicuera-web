@@ -3,7 +3,7 @@ import { SIGN_MSG } from '@/app/constants'
 import { useUserStore } from '@/app/store/userStore'
 import { fetchWithAuth } from '@/app/utils/api'
 import { Button, Card, CardActions, CardContent, Stack, Typography } from '@mui/material'
-import { useAppKit, useAppKitAccount, useAppKitProvider } from '@reown/appkit/react'
+import { useAppKit, useAppKitAccount, useAppKitProvider, useDisconnect } from '@reown/appkit/react'
 import { Eip1193Provider, ethers } from 'ethers'
 import React, { useEffect, useState } from 'react'
 
@@ -17,6 +17,8 @@ const Wallet = () => {
   const { open: openWallet } = useAppKit()
 
   const { walletProvider } = useAppKitProvider<Eip1193Provider>('eip155')
+
+  const { disconnect } = useDisconnect()
 
   useEffect(() => {
     if (userData) {
@@ -48,9 +50,16 @@ const Wallet = () => {
   return (
     <Card sx={{ minWidth: 275 }}>
       <CardContent>
-        <Typography gutterBottom sx={{ color: 'text.secondary', fontSize: 14 }}>
-          List of wallet address
-        </Typography>
+        <Stack direction={'row'} justifyContent={'space-between'} alignItems={'center'}>
+          <Typography gutterBottom sx={{ color: 'text.secondary', fontSize: 14 }}>
+            List of wallet address
+          </Typography>
+          {
+            account && (
+              <Button variant='outlined' onClick={() => disconnect()}>Disconnect wallet</Button>
+            )
+          }
+        </Stack>
         <Stack>
           {
             (wallets && wallets.length) ? wallets.map(w => (
@@ -58,7 +67,7 @@ const Wallet = () => {
                 {w}
               </Typography>
             )) : (
-              <Typography variant="h5" component="div">
+              <Typography variant="h5" component="div" align='center'>
                 No data
               </Typography>
             )

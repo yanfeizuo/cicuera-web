@@ -54,7 +54,7 @@ const Bank = () => {
                 <Typography>mask: {a.last4}</Typography>
               </Paper>
             )) : (
-              <Typography variant="h5" component="div">
+              <Typography variant="h5" component="div" align='center'>
                 No data
               </Typography>
             )

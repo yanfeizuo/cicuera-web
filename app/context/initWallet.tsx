@@ -13,10 +13,12 @@ export const modal = createAppKit({
   metadata,
   themeMode: 'light',
   features: {
-    analytics: true // Optional - defaults to your Cloud configuration
+    analytics: true, // Optional - defaults to your Cloud configuration
+    email: false,
+    // socials: []
   },
   themeVariables: {
-    '--w3m-accent': '#000000',
+    '--w3m-accent': '#000000'
   }
 })
 

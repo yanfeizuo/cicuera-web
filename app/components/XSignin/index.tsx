@@ -10,8 +10,7 @@ const XSignin = () => {
 
   const router = useRouter()
 
-  const { data, checkUser } = useUserStore(useShallow(state => ({
-    data: state.userData,
+  const { checkUser } = useUserStore(useShallow(state => ({
     checkUser: state.checkUser,
   })))
 
@@ -77,7 +76,7 @@ const XSignin = () => {
 
   return (
     <Box>
-      <Button fullWidth variant='contained' disabled={!!data} onClick={handleTwitterLogin}>
+      <Button fullWidth variant='contained' onClick={handleTwitterLogin}>
         Continue with X
       </Button>
     </Box>
