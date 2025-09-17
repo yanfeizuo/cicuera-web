@@ -22,7 +22,9 @@ export const useUserStore = create<userStore>((set, get) => ({
   },
 
   checkUser: async (id: string) => {
-    const res = await fetch(`${API_BASE_URL}/user/checkUser/${id}`)
+    const res = await fetch(`${API_BASE_URL}/user/checkUser/${id}`, {
+      credentials: 'include'
+    })
     const jsonRes = await res.json()
 
     if (!jsonRes.error) {

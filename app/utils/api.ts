@@ -19,6 +19,7 @@ export const fetchWithAuth = (url: string, options: FetchOptions = {}) => {
   
   return fetch(`${API_BASE_URL}/${url}`, {
     ...options,
-    headers
+    headers,
+    credentials: 'include'
   });
 }

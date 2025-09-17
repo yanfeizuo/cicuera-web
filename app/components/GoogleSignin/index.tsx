@@ -17,7 +17,7 @@ const GoogleSignin = () => {
 
   const handleGoogleLogin = useGoogleLogin({
     onSuccess: async tokenResponse => {
-      console.log('tokenResponse', tokenResponse)
+      // console.log('tokenResponse', tokenResponse)
       const userinfoRes = await fetch(`${API_BASE_URL}/g/ouser?accessToken=${tokenResponse.access_token}`)
       const userinfo = await userinfoRes.json()
       console.log('g userinfo', userinfo)
